@@ -1,0 +1,178 @@
+package sxsproject1;
+
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JTextArea;
+
+public class sxsproject1 {
+
+	private JFrame frame;
+	private JTextField txtFirstName;
+	private JTextField txtLastName;
+	private JTextField txtCity;
+	private JTextField txtState;
+	private JTextArea textArea;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					sxsproject1 window = new sxsproject1();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public sxsproject1() {
+		initialize();
+		JOptionPane.showMessageDialog(null, "Main window started");
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 1045, 740);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		txtFirstName = new JTextField();
+		txtFirstName.setBounds(164, 13, 146, 26);
+		frame.getContentPane().add(txtFirstName);
+		txtFirstName.setColumns(10);
+		
+		txtLastName = new JTextField();
+		txtLastName.setBounds(164, 70, 146, 26);
+		frame.getContentPane().add(txtLastName);
+		txtLastName.setColumns(10);
+		
+		txtCity = new JTextField();
+		txtCity.setBounds(164, 124, 146, 26);
+		frame.getContentPane().add(txtCity);
+		txtCity.setColumns(10);
+		
+		txtState = new JTextField();
+		txtState.setBounds(164, 171, 146, 26);
+		frame.getContentPane().add(txtState);
+		txtState.setColumns(10);
+		
+		JCheckBox chckbxSports = new JCheckBox("Sports");
+		chckbxSports.setBounds(164, 226, 139, 29);
+		frame.getContentPane().add(chckbxSports);
+		
+		JCheckBox chckbxPainting = new JCheckBox("Painting");
+		chckbxPainting.setBounds(425, 226, 139, 29);
+		frame.getContentPane().add(chckbxPainting);
+		
+		JCheckBox chckbxCooking = new JCheckBox("Cooking");
+		chckbxCooking.setBounds(728, 226, 139, 29);
+		frame.getContentPane().add(chckbxCooking);
+		
+		JCheckBox chckbxGaming = new JCheckBox("Gaming");
+		chckbxGaming.setBounds(164, 263, 139, 29);
+		frame.getContentPane().add(chckbxGaming);
+		
+		JCheckBox chckbxBlogging = new JCheckBox("Blogging");
+		chckbxBlogging.setBounds(425, 263, 139, 29);
+		frame.getContentPane().add(chckbxBlogging);
+		
+		JLabel lblFirstName = new JLabel("First Name:");
+		lblFirstName.setBounds(78, 16, 88, 20);
+		frame.getContentPane().add(lblFirstName);
+		
+		JLabel lblLastName = new JLabel("Last Name:");
+		lblLastName.setBounds(78, 73, 88, 20);
+		frame.getContentPane().add(lblLastName);
+		
+		JLabel lblCity = new JLabel("City:");
+		lblCity.setBounds(78, 127, 69, 20);
+		frame.getContentPane().add(lblCity);
+		
+		JLabel lblState = new JLabel("State:");
+		lblState.setBounds(78, 174, 69, 20);
+		frame.getContentPane().add(lblState);
+		
+		JLabel lblHobbies = new JLabel("Hobbies:");
+		lblHobbies.setBounds(78, 226, 69, 20);
+		frame.getContentPane().add(lblHobbies);
+		
+		JLabel lblCommunicationPreference = new JLabel("Communication preference:");
+		lblCommunicationPreference.setBounds(229, 304, 202, 20);
+		frame.getContentPane().add(lblCommunicationPreference);
+		
+		JRadioButton rdbtnText = new JRadioButton("Text Message");
+		buttonGroup.add(rdbtnText);
+		rdbtnText.setBounds(435, 300, 155, 29);
+		frame.getContentPane().add(rdbtnText);
+		
+		JRadioButton rdbtnEmail = new JRadioButton("Email");
+		buttonGroup.add(rdbtnEmail);
+		rdbtnEmail.setBounds(435, 336, 155, 29);
+		frame.getContentPane().add(rdbtnEmail);
+		
+		JRadioButton rdbtnPhone = new JRadioButton("Phone Call");
+		buttonGroup.add(rdbtnPhone);
+		rdbtnPhone.setBounds(435, 373, 155, 29);
+		frame.getContentPane().add(rdbtnPhone);
+		
+		JButton btnSubmit = new JButton("Submit");
+		btnSubmit.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent btnSubmit) {
+				String str = txtFirstName.getText() + "\n";
+				str += txtLastName.getText() + "\n";
+				str += txtCity.getText() + "\n";
+				str += txtState.getText() + "\n";
+				
+				if (chckbxSports.isSelected()) str += chckbxSports.getText() + "\n";
+				if (chckbxPainting.isSelected()) str += chckbxPainting.getText() + "\n";
+				if (chckbxCooking.isSelected()) str += chckbxCooking.getText() + "\n";
+				if (chckbxGaming.isSelected()) str += chckbxGaming.getText() + "\n";
+				if (chckbxBlogging.isSelected()) str += chckbxBlogging.getText() + "\n";
+
+			
+				
+				if (rdbtnText.isSelected()) str += rdbtnText.getText() + "";
+				if (rdbtnPhone.isSelected()) str += rdbtnPhone.getText() + "";
+				if (rdbtnEmail.isSelected()) str += rdbtnEmail.getText() + "";
+				
+				
+				textArea.setText(str);
+
+			}
+		});
+		
+		btnSubmit.setBounds(719, 556, 115, 29);
+		frame.getContentPane().add(btnSubmit);
+		
+		
+		
+		JLabel lblUserEntry = new JLabel("User Entry:");
+		lblUserEntry.setBounds(50, 421, 103, 20);
+		frame.getContentPane().add(lblUserEntry);
+		
+		textArea = new JTextArea();
+		textArea.setEditable(false);
+		textArea.setBounds(141, 432, 290, 218);
+		frame.getContentPane().add(textArea);
+	}
+}
